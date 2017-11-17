@@ -1,5 +1,6 @@
 include ":options_example"
 include ":generics_example"
 include ":delegate_example"
+include ":refactoring_examples"
 
 rootProject.name = 'kotlin_examples'
