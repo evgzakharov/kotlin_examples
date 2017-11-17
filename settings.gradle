@@ -1,0 +1,5 @@
+include ":options_example"
+include ":generics_example"
+include ":delegate_example"
+
+rootProject.name = 'kotlin_examples'
