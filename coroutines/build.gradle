@@ -1,0 +1,7 @@
+dependencies {
+    compile("org.jetbrains.kotlinx:kotlinx-coroutines-core:0.19.1")
+}
+
+kotlin {
+    experimental.coroutines = "ENABLE"
+}
