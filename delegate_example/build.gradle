@@ -1,5 +1,3 @@
 dependencies {
-    compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version")
-
-    compile("commons-cli:commons-cli:1.4")
+    compile("org.jetbrains.kotlin:kotlin-reflect:1.1.60")
 }
