@@ -1,15 +1,14 @@
 package com.github.evgzakharov.kotlin
 
 import com.github.evgzakharov.java.SimpleUser
+import java.io.File
 
 fun main(args: Array<String>) {
     val user = SimpleUser("Vasia", "Pupkin", 12)
 
     val test: String? = null
 
-    test!!
-
-    println("1:" + user.prettyPrint())
+    println("0:" + user.prettyPrint())
 
     val result: SimpleUser = user.apply {
         name = "Bankir"
@@ -17,20 +16,20 @@ fun main(args: Array<String>) {
         age = 55
     }
 
-    println("2:" + user.prettyPrint())
-    println("3:" + result.prettyPrint())
+    println("1:" + user.prettyPrint())
+    println("2:" + result.prettyPrint())
 
     val nameWithSurname = user.let { "name:${it.name} surname: ${it.surname}" }
 
-    println("4:" + nameWithSurname)
+    println("3:" + nameWithSurname)
 
     val newUser = user.also { it.age = 120 }
 
-    println("5:" + newUser.prettyPrint())
+    println("4:" + newUser.prettyPrint())
 
     val newUserName = user.run { name }
 
-    println("6:" + newUserName)
+    println("5:" + newUserName)
 
     val result2: Unit = with(user) {
         name = "Aria"
@@ -38,7 +37,19 @@ fun main(args: Array<String>) {
         age = 15
     }
 
-    println("7:" + user)
+    println("6:" + user)
+
+    val users: Map<Int, String> = mapOf(
+            1 to "Vasia",
+            2 to "Petia",
+            3 to "Svetlana"
+    )
+
+    val countries: List<String> = listOf("Russia", "Usa")
+    val mutableCountries: MutableList<String> = mutableListOf("Russia", "Usa")
+
+    val set: Set<Int> = setOf(1, 2, 3)
+    val mutableSet: MutableSet<Int> = mutableSetOf(1, 2, 3)
 }
 
 fun SimpleUser.prettyPrint(): String = "name: $name, surname: $surname, age: $age"
@@ -58,7 +69,7 @@ fun userTest() {
     val simpleUser = SimpleUser("", "", 3)
 
     val any: Any? = null
-    when(any) {
+    when (any) {
         null -> println("null")
         is Person -> println("person name: ${any.name}")
         else -> print("else")
