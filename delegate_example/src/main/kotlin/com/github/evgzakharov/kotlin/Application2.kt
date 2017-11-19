@@ -6,7 +6,7 @@ import kotlin.properties.ReadOnlyProperty
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-fun main(args: Array<String>) {
+fun main2(args: Array<String>) {
 
     val someValue: String by SomeOwnDelegate()
 
@@ -22,19 +22,7 @@ fun main(args: Array<String>) {
 
     println(lazyInitValue)
 
-    var someMutableValue: String by SomeOwnDelegateMutable("someOtherValue")
-
-    println(someMutableValue)
-    println(someMutableValue)
-    println(someMutableValue)
-
-    someMutableValue = "anotherValue"
-
-    println(someMutableValue)
-    println(someMutableValue)
-    println(someMutableValue)
-
-    var state: Int by Delegates.observable(5) { property , old , new ->
+    var state: Int by Delegates.observable(5) { property, old, new ->
         println("state has been changes, old value: $old, new value: $new")
     }
 
@@ -56,23 +44,20 @@ fun main(args: Array<String>) {
 
     ariaStark = 15
     println(ariaStark.whoAreYou)
+
+
 }
 
-data class User(val name: String, val surname: String)
+fun main(args: Array<String>) {
+    var someMutableValue: String by SomeOwnDelegateMutable("someOtherValue")
 
-val Int.whoAreYou: String by ExtensionDelegate()
-
-class ExtensionDelegate : ReadOnlyProperty<Int, String> {
-    override fun getValue(thisRef: Int, property: KProperty<*>) = if (thisRef < 10) {
-        "Aria Stark!"
-    } else {
-        "Nobody.."
-    }
+    println(someMutableValue)
+    someMutableValue = "anotherValue"
+    println(someMutableValue)
 }
 
 class SomeOwnDelegateMutable(srcValue: String) : ReadWriteProperty<Nothing?, String> {
     private var realValue: String = srcValue
-
     private fun randomCase() {
         val random = Random().nextBoolean()
 
@@ -85,14 +70,24 @@ class SomeOwnDelegateMutable(srcValue: String) : ReadWriteProperty<Nothing?, Str
 
     override fun getValue(thisRef: Nothing?, property: KProperty<*>): String {
         randomCase()
-
         return realValue
     }
 
     override fun setValue(thisRef: Nothing?, property: KProperty<*>, value: String) {
         realValue = value
     }
+}
 
+data class User(val name: String, val surname: String)
+
+val Int.whoAreYou: String by ExtensionDelegate()
+
+class ExtensionDelegate : ReadOnlyProperty<Int, String> {
+    override fun getValue(thisRef: Int, property: KProperty<*>) = if (thisRef < 10) {
+        "Aria Stark!"
+    } else {
+        "Nobody.."
+    }
 }
 
 class SomeOwnDelegate : ReadOnlyProperty<Nothing?, String> {

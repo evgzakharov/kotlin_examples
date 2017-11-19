@@ -3,5 +3,6 @@ include ":generics_example"
 include ":delegate_example"
 include ":refactoring_examples"
 include ":coroutines"
+include ":extension"
 
 rootProject.name = 'kotlin_examples'

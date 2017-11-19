@@ -37,7 +37,7 @@ public class Application {
                 .collect(Collectors.toMap(Pair::getCharacter, value -> value));
 
         System.out.println(collect);
-    }
+     }
 }
 
 class Pair {

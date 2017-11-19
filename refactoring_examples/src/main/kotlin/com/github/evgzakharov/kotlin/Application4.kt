@@ -5,6 +5,10 @@ import com.github.evgzakharov.java.SimpleUser
 fun main(args: Array<String>) {
     val user = SimpleUser("Vasia", "Pupkin", 12)
 
+    val test: String? = null
+
+    test!!
+
     println("1:" + user.prettyPrint())
 
     val result: SimpleUser = user.apply {
@@ -38,3 +42,31 @@ fun main(args: Array<String>) {
 }
 
 fun SimpleUser.prettyPrint(): String = "name: $name, surname: $surname, age: $age"
+
+
+class Person {
+    var name: String = ""
+    var surname: String = ""
+
+    //в явном виде указываем что может не быть адреса
+    val address: Address? = null
+}
+
+
+fun userTest() {
+
+    val simpleUser = SimpleUser("", "", 3)
+
+    val any: Any? = null
+    when(any) {
+        null -> println("null")
+        is Person -> println("person name: ${any.name}")
+        else -> print("else")
+    }
+
+}
+
+
+class Address {
+    val street: String = ""
+}
