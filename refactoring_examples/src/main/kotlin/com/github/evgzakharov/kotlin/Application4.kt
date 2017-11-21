@@ -16,19 +16,24 @@ fun main(args: Array<String>) {
         age = 55
     }
 
+    // 1:name: Bankir, surname: Bankovich, age: 55
     println("1:" + user.prettyPrint())
+    // 2:name: Bankir, surname: Bankovich, age: 55
     println("2:" + result.prettyPrint())
 
     val nameWithSurname = user.let { "name:${it.name} surname: ${it.surname}" }
 
+    // 3:name:Bankir surname: Bankovich
     println("3:" + nameWithSurname)
 
     val newUser = user.also { it.age = 120 }
 
+    // 4:name: Bankir, surname: Bankovich, age: 120
     println("4:" + newUser.prettyPrint())
 
     val newUserName = user.run { name }
 
+    // 5:Bankir
     println("5:" + newUserName)
 
     val result2: Unit = with(user) {
@@ -37,6 +42,7 @@ fun main(args: Array<String>) {
         age = 15
     }
 
+    // 6:com.github.evgzakharov.java.SimpleUser@49476842
     println("6:" + user)
 
     val users: Map<Int, String> = mapOf(
